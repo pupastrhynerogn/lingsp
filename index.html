@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林哥奢品匯 - 奢華腕錶之家</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="index-header">
+        <h1>林哥奢品匯</h1>
+        <p class="slogan">奢華於心，時間在握</p>
+    </header>
+    <div class="container index-container">
+        <div class="intro">
+            <h2>歡迎體驗頂級腕錶的魅力</h2>
+            <p>林哥奢品匯為你帶來專櫃品質的高端腕錶，無論是香港本地尊貴系列還是全球精選款式，我們以專業服務和卓越品質，滿足你的每一個期待。</p>
+            <p class="redirect-notice"><span id="countdown">2</span>秒後將根據您的地區自動跳轉...</p>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 林哥奢品匯 | 版權所有</p>
+        <div class="footer-info">
+            <p>趕快通過 WhatsApp/微信聯繫我們</p>
+            <p>· 享受香港本地倉庫的快速面交送貨，親自驗貨，建立信任</p>
+            <p>· 3年保修讓你無後顧之憂</p>
+            <p>· 專業師傅調校表帶，貼合你的每一個需求</p>
+            <p>· 只需150元定金即可全港約看貨，不滿意現場退還，讓購物之旅省心又安心</p>
+        </div>
+    </footer>
+    <script>
+        let timeLeft = 2;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.region === 'Hong Kong' || data.country === 'HK') {
+                            window.location.href = 'hk-page.html';
+                        } else {
+                            window.location.href = 'other-page.html';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('IP檢測失敗，默認跳轉至全球頁面', error);
+                        window.location.href = 'other-page.html';
+                    });
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
