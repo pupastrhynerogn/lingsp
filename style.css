@@ -5,6 +5,7 @@ body {
     background: #f5f5f5;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden; /* 防止水平溢出 */
 }
 
 header {
@@ -53,6 +54,7 @@ h1 {
     margin: 40px auto;
     padding: 20px;
     text-align: center;
+    overflow-x: hidden; /* 防止容器內溢出 */
 }
 
 .index-container {
@@ -101,7 +103,11 @@ h1 {
     margin: 30px 0;
 }
 
-.gallery img {
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item img {
     width: 100%;
     max-width: 300px;
     height: auto;
@@ -110,9 +116,61 @@ h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gallery img:hover {
+.gallery-item img:hover {
     transform: scale(1.1);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item p {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0 0;
+}
+
+.reviews-container {
+    margin: 40px 0;
+}
+
+.reviews-container h3 {
+    font-size: 28px;
+    color: #1E3A8A;
+    margin-bottom: 20px;
+}
+
+.reviews-slider {
+    max-height: 120px;
+    overflow: hidden;
+    text-align: left;
+    padding: 15px;
+    background: #f9f9f9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIA5kZGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBQmwELdX9b9QAAAABJRU5ErkJggg==') repeat;
+    border: 3px solid #1E3A8A;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.reviews-slider::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #87CEEB, #1E3A8A) 1;
+    border-radius: 24px;
+    z-index: -1;
+}
+
+.reviews-slider:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.reviews-slider p {
+    font-size: 16px;
+    color: #444;
+    margin: 5px 0;
+    line-height: 1.5;
 }
 
 p {
@@ -221,8 +279,20 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .gallery img {
+    .gallery-item img {
         max-width: 100%;
+    }
+
+    .reviews-slider {
+        max-height: 100px;
+        padding: 10px;
+    }
+
+    .reviews-slider::before {
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
     }
 
     .wechat-qr img {
@@ -261,7 +331,7 @@ footer {
     }
 
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .wechat-qr img {
