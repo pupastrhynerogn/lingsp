@@ -8,15 +8,11 @@ body {
     overflow-x: hidden; /* 防止水平溢出 */
 }
 
-header {
+header, .index-header {
     text-align: center;
     padding: 40px 20px;
     background: linear-gradient(135deg, #87CEEB, #1E3A8A);
     color: #fff;
-}
-
-.index-header {
-    padding: 60px 20px;
 }
 
 h1 {
@@ -32,24 +28,7 @@ h1 {
     font-weight: 400;
 }
 
-.whatsapp-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    margin: 20px 0;
-    font-size: 18px;
-    text-decoration: none;
-    color: #fff;
-    background: #25D366;
-    border-radius: 25px;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.whatsapp-btn:hover {
-    background: #1ebe52;
-    transform: scale(1.05);
-}
-
-.container {
+.container, .index-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
@@ -57,174 +36,41 @@ h1 {
     overflow-x: hidden; /* 防止容器內溢出 */
 }
 
-.index-container {
-    background: #fff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.intro {
+    margin: 20px 0;
 }
 
 .intro h2 {
-    font-size: 32px;
+    font-size: 28px;
     color: #1E3A8A;
     margin-bottom: 20px;
 }
 
 .intro p {
-    font-size: 18px;
+    font-size: 16px;
     color: #555;
-    max-width: 800px;
-    margin: 0 auto 20px;
+    line-height: 1.8;
 }
 
 .redirect-notice {
-    font-size: 24px;
-    font-weight: bold;
-    color: #e63946;
+    font-size: 20px;
+    color: #1E3A8A;
     margin-top: 20px;
-    animation: blink 1s infinite;
+}
+
+.redirect-notice #countdown {
+    font-weight: bold;
+    color: #ff4444; /* 紅色突出倒計時 */
+}
+
+.blink {
+    animation: blink 0.5s infinite; /* 閃光效果 */
 }
 
 @keyframes blink {
-    50% {
-        opacity: 0.5;
-    }
-}
-
-#countdown {
-    font-size: 28px;
-    color: #e63946;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    margin: 30px 0;
-}
-
-.gallery-item {
-    text-align: center;
-}
-
-.gallery-item img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-item p {
-    font-size: 14px;
-    color: #777;
-    margin: 5px 0 0;
-}
-
-.reviews-container {
-    margin: 40px 0;
-}
-
-.reviews-container h3 {
-    font-size: 28px;
-    color: #1E3A8A;
-    margin-bottom: 20px;
-}
-
-.reviews-slider {
-    max-height: 120px;
-    overflow: hidden;
-    text-align: left;
-    padding: 15px;
-    background: #f9f9f9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJElEQVQYV2NkIA5kZGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBQmwELdX9b9QAAAABJRU5ErkJggg==') repeat;
-    border: 3px solid #1E3A8A;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.3);
-    position: relative;
-}
-
-.reviews-slider::before {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    border: 3px solid transparent;
-    border-image: linear-gradient(45deg, #87CEEB, #1E3A8A) 1;
-    border-radius: 24px;
-    z-index: -1;
-}
-
-.reviews-slider:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.4);
-}
-
-.reviews-slider p {
-    font-size: 16px;
-    color: #444;
-    margin: 5px 0;
-    line-height: 1.5;
-}
-
-p {
-    font-size: 20px;
-    color: #555;
-    margin: 20px 0;
-}
-
-.contact {
-    margin: 40px 0;
-}
-
-.contact h3 {
-    font-size: 28px;
-    color: #1E3A8A;
-}
-
-.wechat-title {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.wechat-qr-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.wechat-qr {
-    text-align: center;
-}
-
-.wechat-qr img {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #7BB32E;
-    border-radius: 10px;
-}
-
-.wechat-qr p {
-    font-size: 16px;
-    margin: 10px 0 0;
-    color: #555;
-    font-weight: bold;
-}
-
-.service-info {
-    font-size: 16px;
-    color: #333;
-    margin: 20px 0;
-    padding: 0 20px;
-    line-height: 1.8;
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 footer {
@@ -246,6 +92,7 @@ footer {
     text-align: center;
 }
 
+/* 響應式設計 */
 @media (max-width: 768px) {
     h1 {
         font-size: 36px;
@@ -255,61 +102,16 @@ footer {
         font-size: 16px;
     }
 
-    .index-container {
-        padding: 20px;
-    }
-
     .intro h2 {
         font-size: 24px;
     }
 
     .intro p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .redirect-notice {
-        font-size: 20px;
-    }
-
-    #countdown {
-        font-size: 24px;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-item img {
-        max-width: 100%;
-    }
-
-    .reviews-slider {
-        max-height: 100px;
-        padding: 10px;
-    }
-
-    .reviews-slider::before {
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-    }
-
-    .wechat-qr img {
-        width: 200px;
-        height: 200px;
-    }
-
-    .contact h3 {
-        font-size: 24px;
-    }
-
-    .wechat-title {
         font-size: 18px;
-    }
-
-    .service-info {
-        font-size: 14px;
     }
 
     footer {
@@ -330,20 +132,11 @@ footer {
         font-size: 14px;
     }
 
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .wechat-qr img {
-        width: 150px;
-        height: 150px;
+    .intro h2 {
+        font-size: 20px;
     }
 
     .redirect-notice {
-        font-size: 18px;
-    }
-
-    #countdown {
-        font-size: 22px;
+        font-size: 16px;
     }
 }

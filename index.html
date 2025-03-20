@@ -16,7 +16,7 @@
         <div class="intro">
             <h2>歡迎體驗頂級腕錶的魅力</h2>
             <p>林哥奢品匯為你帶來專櫃品質的高端腕錶，無論是香港本地尊貴系列還是全球精選款式，我們以專業服務和卓越品質，滿足你的每一個期待。</p>
-            <p class="redirect-notice"><span id="countdown">2</span>秒後將根據您的地區自動跳轉...</p>
+            <p class="redirect-notice">正在進入到林哥腕錶世界... 請稍候 <span id="countdown">2</span> 秒</p>
         </div>
     </div>
     <footer>
@@ -36,6 +36,7 @@
         const countdown = setInterval(() => {
             timeLeft--;
             countdownElement.textContent = timeLeft;
+            countdownElement.classList.toggle('blink'); // 切換閃光效果
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                 fetch('https://ipapi.co/json/')
