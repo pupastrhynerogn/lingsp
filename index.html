@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>林哥奢品匯 - 奢華腕錶之家</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16943511953"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-16943511953');
+    </script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +24,7 @@
         <div class="intro">
             <h2>歡迎體驗頂級腕錶的魅力</h2>
             <p>林哥奢品匯為你帶來專櫃品質的高端腕錶，無論是香港本地尊貴系列還是全球精選款式，我們以專業服務和卓越品質，滿足你的每一個期待。</p>
-            <p class="redirect-notice">正在進入到林哥奢品匯頁面...</p>
+            <p class="redirect-notice">正在進入到林哥腕錶世界... 請稍候 <span id="countdown">2</span> 秒</p>
         </div>
     </div>
     <footer>
@@ -31,21 +39,29 @@
     </footer>
     <script>
         let timeLeft = 2;
-        setTimeout(() => {
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.region === 'Hong Kong' || data.country === 'HK') {
-                        window.location.href = 'hk-page.html';
-                    } else {
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            countdownElement.classList.toggle('blink'); // 切換閃光效果
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.region === 'Hong Kong' || data.country === 'HK') {
+                            window.location.href = 'hk-page.html';
+                        } else {
+                            window.location.href = 'other-page.html';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('IP檢測失敗，默認跳轉至全球頁面', error);
                         window.location.href = 'other-page.html';
-                    }
-                })
-                .catch(error => {
-                    console.error('IP檢測失敗，默認跳轉至全球頁面', error);
-                    window.location.href = 'other-page.html';
-                });
-        }, 2000); // 2秒後跳轉
+                    });
+            }
+        }, 1000);
     </script>
 </body>
 </html>
